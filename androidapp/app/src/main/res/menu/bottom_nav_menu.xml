@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/baseline_tv_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/baseline_sensors_24"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/baseline_schedule_24"
+        android:title="@string/title_notifications" />
+
+
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/baseline_rss_feed_24"
+        android:title="@string/title_news" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/baseline_more_horiz_24"
+        android:title="@string/title_more" />
+
+</menu>

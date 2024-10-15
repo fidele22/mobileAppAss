@@ -1,0 +1,38 @@
+<!-- res/layout/fragment_more.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:layout_marginLeft="20dp">
+
+    <TextView
+        android:id="@+id/link1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fil data form"
+         android:padding="5dp"
+         />
+
+    <TextView
+        android:id="@+id/link2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view  list "
+        android:padding="5dp"/>
+    <TextView
+        android:id="@+id/link3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New tabs"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/link4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Move on Link 4"
+        android:padding="5dp"/>
+    <!-- Add more links as needed -->
+
+</LinearLayout>
