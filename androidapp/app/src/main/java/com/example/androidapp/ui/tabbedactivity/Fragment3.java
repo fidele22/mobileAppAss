@@ -1,4 +1,4 @@
-package com.example.androidapp.ui.fragmentactivity;
+package com.example.androidapp.ui.tabbedactivity;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -29,6 +29,19 @@ public class Fragment3 extends Fragment {
 
         // Initialize car list
         carList = new ArrayList<>();
+        carList.add(new Car("Toyota Camry", "A reliable sedan."));
+        carList.add(new Car("Honda Accord", "A spacious sedan."));
+        carList.add(new Car("Ford Mustang", "A powerful sports car."));
+        carList.add(new Car("Chevrolet Malibu", "A comfortable midsize sedan."));
+        carList.add(new Car("Nissan Altima", "A stylish sedan."));
+        carList.add(new Car("BMW 3 Series", "A luxury sports sedan."));
+        carList.add(new Car("Tesla Model S", "An electric car."));
+        carList.add(new Car("Audi A4", "A compact executive car."));
+        carList.add(new Car("Mercedes-Benz C-Class", "A premium sedan."));
+        carList.add(new Car("Hyundai Sonata", "A midsize sedan."));
+        carList.add(new Car("Kia Optima", "An affordable midsize sedan."));
+
+
         carList.add(new Car("Toyota Camry", "A reliable sedan."));
         carList.add(new Car("Honda Accord", "A spacious sedan."));
         carList.add(new Car("Ford Mustang", "A powerful sports car."));

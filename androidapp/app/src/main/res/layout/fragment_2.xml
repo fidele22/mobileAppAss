@@ -10,11 +10,11 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
     <!-- Button to go back to MainActivity -->
-    <Button
-        android:id="@+id/btn_back_to_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Home"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_back_to_main"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Back to Home"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="16dp" />-->
 </LinearLayout>

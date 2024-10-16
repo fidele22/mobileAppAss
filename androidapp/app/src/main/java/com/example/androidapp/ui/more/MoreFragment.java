@@ -1,5 +1,5 @@
 package com.example.androidapp.ui.more;
-
+import com.example.androidapp.MainActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -44,12 +44,20 @@ public class MoreFragment extends BottomSheetDialogFragment {
             }
         });
 
-        // Set onClickListener for link3 to launch TabbedActivity
+
         // Set onClickListener for link3 to navigate to TabbedActivity
         link3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TabbedActivity.class);
+                startActivity(intent);
+            }
+        });
+        // Set onClickListener for link4 to navigate to MainActivity
+        link4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });

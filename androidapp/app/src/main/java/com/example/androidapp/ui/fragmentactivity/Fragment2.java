@@ -43,24 +43,24 @@ public class Fragment2 extends Fragment {
         CarAdapter adapter = new CarAdapter(requireContext(), carList);
         listView.setAdapter(adapter);
 
-        // Find the back button and set an OnClickListener
-        Button backToMainButton = view.findViewById(R.id.btn_back_to_main);
-        backToMainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateBackToMainActivity();
-            }
-        });
+//        // Find the back button and set an OnClickListener
+//        Button backToMainButton = view.findViewById(R.id.btn_back_to_main);
+//        backToMainButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                navigateBackToMainActivity();
+//            }
+//        });
 
         return view;
     }
 
-    // Method to navigate back to MainActivity
-    private void navigateBackToMainActivity() {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
-        getActivity().finish();  // Optionally close the FragmentActivity if you want to remove it from the back stack
-    }
+//    // Method to navigate back to MainActivity
+//    private void navigateBackToMainActivity() {
+//        Intent intent = new Intent(getActivity(), MainActivity.class);
+//        startActivity(intent);
+//        getActivity().finish();  // Optionally close the FragmentActivity if you want to remove it from the back stack
+//    }
 
     // Car data model
     private static class Car {

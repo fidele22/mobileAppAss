@@ -10,7 +10,8 @@
         android:id="@+id/link1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fil data form"
+        android:textSize="15dp"
+        android:text="Fill data form"
          android:padding="5dp"
          />
 
@@ -19,19 +20,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="view  list "
+        android:textSize="15dp"
         android:padding="5dp"/>
     <TextView
         android:id="@+id/link3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New tabs"
+        android:text="Tab view"
+        android:textSize="15dp"
         android:padding="5dp"/>
 
     <TextView
         android:id="@+id/link4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Move on Link 4"
+        android:text="Quit"
+        android:textSize="15dp"
         android:padding="5dp"/>
     <!-- Add more links as needed -->
 

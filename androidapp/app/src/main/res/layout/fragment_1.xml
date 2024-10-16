@@ -16,8 +16,10 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="25dp"
                 android:text="Fill form below"
                 android:layout_marginBottom="5dp" />
         </LinearLayout>
@@ -36,7 +38,18 @@
             android:id="@+id/edit_text_car_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year"
+            android:layout_marginTop="15dp"
+            android:hint="Delivered Year"
+            android:padding="12dp"
+            android:minHeight="48dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/edit_text_car_plaque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Car plaque"
             android:padding="12dp"
             android:minHeight="48dp"
             android:background="@android:drawable/edit_text"
@@ -46,9 +59,17 @@
             android:id="@+id/checkbox_is_electric"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
             android:text="Electric"
             android:padding="12dp"
             android:minHeight="48dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            />
     </LinearLayout>
 
     <!-- Added ID to the Button -->
@@ -59,4 +80,13 @@
         android:text="Visit List"
         android:layout_gravity="bottom"
         android:layout_marginBottom="50dp" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_back_to_main"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="bottom"-->
+<!--        android:text="Back to Home"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="16dp" />-->
 </FrameLayout>

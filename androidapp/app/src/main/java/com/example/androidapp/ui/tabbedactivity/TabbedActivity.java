@@ -10,7 +10,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.androidapp.R;
-import com.example.androidapp.ui.fragmentactivity.Fragment3;
 import com.example.androidapp.ui.fragmentactivity.Fragment4;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -37,11 +36,23 @@ public class TabbedActivity extends AppCompatActivity {
         FragmentPagerAdapter pagerAdapter = new FragmentPagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
 
-        // Link TabLayout with ViewPager
+
+        // Link TabLayout with ViewPager and set custom tab names
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> tab.setText("Fragment " + (position + 3))
+                (tab, position) -> {
+                    switch (position) {
+                        case 0:
+                            tab.setText("Car List");  // Custom title for the first tab
+                            break;
+                        case 1:
+                            tab.setText("Others");  // Custom title for the second tab
+                            break;
+                    }
+                }
         ).attach();
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
