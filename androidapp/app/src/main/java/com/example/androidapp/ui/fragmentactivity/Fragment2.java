@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.androidapp.R;
 import com.example.androidapp.adapter.CarAdapter;
 import com.example.androidapp.crud.CarDAO;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class Fragment2 extends Fragment {
+public class Fragment2 extends Fragment implements CarAdapter.OnCarActionListener {  // Implement the interface
     private RecyclerView recyclerView;
     private CarAdapter carAdapter;
     private CarDAO carDAO;
@@ -50,7 +51,7 @@ public class Fragment2 extends Fragment {
     // Method to load cars from the database and set the adapter
     private void loadCars() {
         Cursor cursor = carDAO.getAllCars();
-        carAdapter = new CarAdapter(cursor);
+        carAdapter = new CarAdapter(cursor, this);  // Pass both the cursor and this fragment as the listener
         recyclerView.setAdapter(carAdapter);
     }
 
@@ -58,5 +59,24 @@ public class Fragment2 extends Fragment {
     public void onResume() {
         super.onResume();
         loadCars(); // Refresh data when returning to Fragment2
+    }
+
+    @Override
+    public void onEdit(int carId) {
+        // Fetch car data from the database and pass it to Fragment1 for editing
+        Bundle bundle = new Bundle();
+        bundle.putInt("carId", carId);
+        Fragment1 fragment1 = new Fragment1();
+        fragment1.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment1)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void onDelete(int carId) {
+        carDAO.deleteCar(carId); // Delete the car from the database
+        loadCars(); // Refresh the list
     }
 }
