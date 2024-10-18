@@ -28,6 +28,25 @@ public class CarDAO {
         db.insert("cars", null, values);
     }
 
+    // Fetch a car by ID and return a Car object
+    public Car getCarById(int carId) {
+        SQLiteDatabase db = carDatabase.getReadableDatabase();
+        Cursor cursor = db.query("cars", null, "car_id = ?", new String[]{String.valueOf(carId)}, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            String carName = cursor.getString(cursor.getColumnIndex("car_name"));
+            boolean isElectric = cursor.getInt(cursor.getColumnIndex("is_electric")) == 1;
+            int year = cursor.getInt(cursor.getColumnIndex("year"));
+
+            cursor.close();
+            // Return a Car object
+            return new Car(carId, carName, isElectric, year);
+        }
+
+        // Return null if no car is found
+        return null;
+    }
+
     // Method to update an existing car in the database
     public void updateCar(Car car) {
         SQLiteDatabase db = carDatabase.getWritableDatabase();

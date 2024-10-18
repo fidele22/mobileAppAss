@@ -16,7 +16,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     private Cursor cursor;
     private OnCarActionListener carActionListener;
 
-    // Constructor accepting the cursor and action listener
     public CarAdapter(Cursor cursor, OnCarActionListener carActionListener) {
         this.cursor = cursor;
         this.carActionListener = carActionListener;
@@ -31,10 +30,10 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         cursor.moveToPosition(position);
-        int id = cursor.getInt(0);  // Assuming the first column is car_id
-        holder.carNameTextView.setText(cursor.getString(1)); // Assuming the second column is car_name
-        holder.yearTextView.setText(String.valueOf(cursor.getInt(3))); // Assuming the fourth column is year
-        holder.isElectricTextView.setText(cursor.getInt(2) == 1 ? "Electric" : "Not Electric"); // Third column is is_electric
+        int id = cursor.getInt(cursor.getColumnIndex("car_id"));
+        holder.carNameTextView.setText(cursor.getString(cursor.getColumnIndex("car_name")));
+        holder.yearTextView.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("year"))));
+        holder.isElectricTextView.setText(cursor.getInt(cursor.getColumnIndex("is_electric")) == 1 ? "Electric" : "Not Electric");
 
         // Edit Button Click
         holder.editButton.setOnClickListener(v -> carActionListener.onEdit(id));
@@ -60,8 +59,8 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
             carNameTextView = itemView.findViewById(R.id.car_name_text_view);
             yearTextView = itemView.findViewById(R.id.year_text_view);
             isElectricTextView = itemView.findViewById(R.id.is_electric_text_view);
-            editButton = itemView.findViewById(R.id.edit_button);   // Button to edit the car
-            deleteButton = itemView.findViewById(R.id.delete_button);  // Button to delete the car
+            editButton = itemView.findViewById(R.id.edit_button);
+            deleteButton = itemView.findViewById(R.id.delete_button);
         }
     }
 
