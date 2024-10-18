@@ -1,101 +1,62 @@
 package com.example.androidapp.ui.fragmentactivity;
 
-import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
-import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
-import com.example.androidapp.MainActivity;
 import com.example.androidapp.R;
-
-import java.util.ArrayList;
+import com.example.androidapp.adapter.CarAdapter;
+import com.example.androidapp.crud.CarDAO;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Fragment2 extends Fragment {
-
-    private ListView listView;
-    private ArrayList<Car> carList;
+    private RecyclerView recyclerView;
+    private CarAdapter carAdapter;
+    private CarDAO carDAO;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2, container, false);
-        listView = view.findViewById(R.id.car_list_view);
 
-        // Initialize sample car data
-        carList = new ArrayList<>();
-        carList.add(new Car("Toyota Camry", "A reliable sedan with great fuel economy."));
-        carList.add(new Car("Honda Accord", "A spacious sedan known for its durability."));
-        carList.add(new Car("Ford Mustang", "An iconic sports car with powerful performance."));
-        carList.add(new Car("Chevrolet Malibu", "A comfortable midsize sedan with modern features."));
-        carList.add(new Car("Nissan Altima", "A stylish sedan with advanced safety technology."));
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Set up the adapter
-        CarAdapter adapter = new CarAdapter(requireContext(), carList);
-        listView.setAdapter(adapter);
+        carDAO = new CarDAO(getContext());
+        loadCars(); // Load initial data
 
-//        // Find the back button and set an OnClickListener
-//        Button backToMainButton = view.findViewById(R.id.btn_back_to_main);
-//        backToMainButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navigateBackToMainActivity();
-//            }
-//        });
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Load Fragment1 to add a new car
+                Fragment1 fragment1 = new Fragment1();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, fragment1)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return view;
     }
 
-//    // Method to navigate back to MainActivity
-//    private void navigateBackToMainActivity() {
-//        Intent intent = new Intent(getActivity(), MainActivity.class);
-//        startActivity(intent);
-//        getActivity().finish();  // Optionally close the FragmentActivity if you want to remove it from the back stack
-//    }
-
-    // Car data model
-    private static class Car {
-        String name;
-        String description;
-
-        Car(String name, String description) {
-            this.name = name;
-            this.description = description;
-        }
+    // Method to load cars from the database and set the adapter
+    private void loadCars() {
+        Cursor cursor = carDAO.getAllCars();
+        carAdapter = new CarAdapter(cursor);
+        recyclerView.setAdapter(carAdapter);
     }
 
-    // Custom adapter for the car list
-    private static class CarAdapter extends ArrayAdapter<Car> {
-        CarAdapter(@NonNull Context context, ArrayList<Car> cars) {
-            super(context, 0, cars);
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
-            }
-
-            Car currentCar = getItem(position);
-            if (currentCar != null) {
-                TextView nameTextView = convertView.findViewById(android.R.id.text1);
-                TextView descriptionTextView = convertView.findViewById(android.R.id.text2);
-
-                nameTextView.setText(currentCar.name);
-                descriptionTextView.setText(currentCar.description);
-            }
-
-            return convertView;
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadCars(); // Refresh data when returning to Fragment2
     }
 }
