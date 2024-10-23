@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidapp.R;
@@ -28,12 +27,15 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     }
 
     @Override
+
     public void onBindViewHolder(ViewHolder holder, int position) {
         cursor.moveToPosition(position);
-        int id = cursor.getInt(cursor.getColumnIndex("car_id"));
-        holder.carNameTextView.setText(cursor.getString(cursor.getColumnIndex("car_name")));
-        holder.yearTextView.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("year"))));
-        holder.isElectricTextView.setText(cursor.getInt(cursor.getColumnIndex("is_electric")) == 1 ? "Electric" : "Not Electric");
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow("car_id"));
+
+        // Set car name, year, and electric status
+        holder.carNameTextView.setText("Car Name: " + cursor.getString(cursor.getColumnIndexOrThrow("car_name")));
+        holder.yearTextView.setText("Year: " + cursor.getInt(cursor.getColumnIndexOrThrow("year")));
+        holder.isElectricTextView.setText(cursor.getInt(cursor.getColumnIndexOrThrow("is_electric")) == 1 ? "Electric" : "Not Electric");
 
         // Edit Button Click
         holder.editButton.setOnClickListener(v -> carActionListener.onEdit(id));
