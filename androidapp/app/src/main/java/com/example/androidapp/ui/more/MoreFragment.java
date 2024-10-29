@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.androidapp.ui.networkactivity.NetworkActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ public class MoreFragment extends BottomSheetDialogFragment {
         TextView link2 = view.findViewById(R.id.link2);
         TextView link3 = view.findViewById(R.id.link3);
         TextView link4 = view.findViewById(R.id.link4);
+        TextView link5 = view.findViewById(R.id.link5);
 
         // Set onClickListener for link1 to navigate to Fragment1
         link1.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +56,21 @@ public class MoreFragment extends BottomSheetDialogFragment {
                 startActivity(intent);
             }
         });
-        // Set onClickListener for link4 to navigate to MainActivity
+
+
         link4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NetworkActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        // Set onClickListener for link4 to navigate to MainActivity
+        link5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -75,6 +91,12 @@ public class MoreFragment extends BottomSheetDialogFragment {
     // Method to launch TabbedActivity
     private void launchTabbedActivity() {
         Intent intent = new Intent(getActivity(), TabbedActivity.class); // Launch TabbedActivity
+        startActivity(intent);
+    }
+
+    // Method to launch NetworkActivity
+    private void launchNetworkActivity() {
+        Intent intent = new Intent(getActivity(), NetworkActivity.class); // Launch TabbedActivity
         startActivity(intent);
     }
 }

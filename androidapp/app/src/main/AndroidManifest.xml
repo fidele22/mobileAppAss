@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Place uses-permission here, outside the application tag -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,26 +14,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidapp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".ui.networkactivity.NetworkActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.tabbedactivity.TabbedActivity"
-            android:exported="false" />
-        <!-- MainActivity Declaration -->
+            android:exported="false" /> <!-- MainActivity Declaration -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity> <!-- FragmentActivity Declaration -->
+
         <activity
             android:name=".ui.fragmentactivity.FragmentActivity"
             android:exported="true"
             android:label="Fragment Activity" />
+
+
+
+
     </application>
 
 </manifest>
